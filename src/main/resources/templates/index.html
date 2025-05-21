@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Text Console Viewer</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h2 {
+            padding: 20px;
+            margin: 0;
+            background-color: #2c3e50;
+            color: white;
+        }
+
+        form {
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            height: calc(100vh - 60px);
+        }
+
+        textarea, .console {
+            font-family: monospace;
+            font-size: 16px;
+            line-height: 1.4;
+            height: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            resize: none;
+        }
+
+        textarea {
+            width: 50%;
+            border: none;
+            border-right: 1px solid #ccc;
+            background-color: #ffffff;
+            outline: none;
+        }
+
+        .console {
+            width: 50%;
+            background-color: #1e1e1e;
+            color: #00ff00;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+
+        .bottom-bar {
+            padding: 10px 20px;
+            background-color: #f4f4f4;
+            text-align: left;
+        }
+
+        button {
+            padding: 12px 24px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            background-color: #3498db;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+        .console.success {
+            color: #00ff00; /* bright green */
+        }
+
+        .console.error {
+            color: #ff4444; /* bright red */
+        }
+
+    </style>
+
+</head>
+<body>
+<h2>Go</h2>
+
+<form method="post" action="/submit">
+    <div class="container">
+        <!-- Left: Input Area -->
+        <textarea name="inputText" placeholder="Paste your paragraph, code, or book content here..."
+                  th:text="${inputText}"></textarea>
+
+        <!-- Middle: Button Area -->
+        <div class="middle">
+            <button type="submit">RUN</button>
+        </div>
+
+        <!-- Right: Output Console -->
+        <!-- Replace your current output console div with this -->
+        <div class="console" th:text="${outputText}"
+             th:classappend="${status} == 'success' ? ' success' : ( ${status} == 'error' ? ' error' : '')">
+            Console Output
+        </div>
+
+    </div>
+</form>
+</body>
+
+
+</body>
+</html>
