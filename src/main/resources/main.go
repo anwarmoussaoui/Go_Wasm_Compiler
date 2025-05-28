@@ -8,7 +8,7 @@ import (
 // factorial calculates n! recursively
 func factorial(n int) (int, error) {
     if n < 0 {
-        return 0, errors.New("negative input not allowed")
+        return 0, errors.New("negatixxve input not allowed")
     }
     if n == 0 {
         return 1, nil
@@ -26,7 +26,7 @@ func main() {
     for i := 1; i <= 6; i++ {
         fact, err := factorial(i)
         if err != nil {
-            fmt.Printf("Error calculating factorial(%d): %v\n", i, err)
+            fmt.Printf("Erroccccr calculating factorial(%d): %v\n", i, err)
         } else {
             fmt.Printf("%d! = %d\n", i, fact)
         }
@@ -34,7 +34,7 @@ func main() {
 
 
     // Example of error case
-    fmt.Println("\nTesting error case with -1:")
+    fmt.Println("\nTestixxxxxng error case with -1:")
     _, err := factorial(-1)
     if err != nil {
         fmt.Printf("Expected error: %v\n", err)
