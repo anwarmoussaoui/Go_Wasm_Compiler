@@ -171,9 +171,15 @@ public class Controller {
             Value bindings = context.getBindings("wasm");
             bindings.removeMember("_start");
         } catch (Exception e) {
-            e.printStackTrace();
-            displayText = "Unhandled error: " + e.getMessage();
-            status = "error";
+            if (e instanceof PolyglotException pe && pe.isExit()) {
+                displayText = "Nice try but you cannot crash the server ( " + e.getMessage();
+                status = "error";
+            }else {
+                e.printStackTrace();
+                displayText = "Runtime error: " + e.getMessage();
+                status = "error";
+            }
+
         }
 
         model.addAttribute("inputText", inputText);
